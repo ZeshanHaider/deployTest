@@ -1,0 +1,977 @@
+<!-- - var menuBorder = true-->
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <meta name="description" content="Ring Audit">
+  <meta name="keywords" content="admin template, stack admin template, dashboard template, flat admin template, responsive admin template, web app">
+  <meta name="author" content="PIXINVENT">
+  <title>Ring Audit</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../../../app-assets/images/ico/favicon-32.png">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i"
+  rel="stylesheet">
+  <!-- BEGIN VENDOR CSS-->
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/css/vendors.css">
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/forms/icheck/icheck.css">
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/forms/icheck/custom.css">
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/charts/morris.css">
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/extensions/unslider.css">
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/css/weather-icons/climacons.min.css">
+  <!-- END VENDOR CSS-->
+  <!-- BEGIN STACK CSS-->
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/css/app.css">
+  <!-- END STACK CSS-->
+  <!-- BEGIN Page Level CSS-->
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/css/core/menu/menu-types/vertical-menu.css">
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/css/core/colors/palette-climacon.css">
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/css/core/colors/palette-gradient.css">
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/fonts/simple-line-icons/style.min.css">
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/fonts/meteocons/style.min.css">
+  <link rel="stylesheet" type="text/css" href="../../../app-assets/css/pages/users.css">
+  <!-- END Page Level CSS-->
+  <link rel="stylesheet" type="text/css" href="../../../assets/css/style.css">
+  <script src="https://unpkg.com/ag-grid-enterprise/dist/ag-grid-enterprise.min.noStyle.js"></script>
+  
+    <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css">
+    <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-balham.css">
+
+    <link rel="stylesheet" type="text/css" href="../../../app-assets/css/designer.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet">
+  
+  <style>
+    
+      html body {
+        background-color: #fff;
+      }
+
+      .content-wrapper {
+        padding-top: 5px !important;
+      }
+
+      h2.brand-text {
+        color: #24a1ec;
+      }
+
+      span.avatar.avatar-online {
+        display: none;
+      }
+
+      /* .myGrid-div, footer, .myGrid-div2, .risk-table-div{
+        display: none;
+      } */
+
+      .myGrid-div h6{
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 10px;
+        color: #808080fa;
+      }
+
+      .subtext{
+        font-size: 9px !important;
+        text-transform: capitalize !important;
+      }
+
+      .myGrid-div h5{
+        margin-top: 15px;
+        font-weight: bold;
+      }
+
+      #summary, #matrix3, #impact-scale, .assessments-table-div{
+        overflow: scroll;
+      }
+
+      div.blueTable {
+        border: 2px solid #E7E7E7;
+        background-color: #E7E7E7;
+        width: 100%;
+        text-align: left;
+        border-collapse: collapse;
+      }
+
+
+.divTableHead, .divTableCell {
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.divTableHead2{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+
+.divTable.blueTable .divTableCell, .divTable.blueTable .divTableHead,.divTableHead2 {
+  border: 8px solid #FFFFFF;
+  padding: 9px 5px;
+}
+.divTable.blueTable .divTableBody .divTableCell {
+  font-size: 11px;
+  font-weight: normal;
+  color: #fff;
+  background: #EFBA46;
+}
+
+.grayCell{
+  box-shadow: 10px 10px 5px #80808017 !important;
+  background: #E7E7E7 !important;
+  color: rgba(28, 28, 28, 0.76) !important;
+ }
+
+ .redCell{
+  background:#AD4739 !important;
+ }
+
+ .greenCell{
+  background: #8AB353 !important;
+ }
+
+ .greenCell2{
+  background: #C3CB51 !important;
+ }
+
+.yellowCell{
+  background: #ED9B38 !important;
+ }
+
+ .redCell2{
+  background: #D75847 !important;
+ }
+
+
+.divTable.blueTable .divTableHeading .divTableHead {
+  font-size: 11px;
+  font-weight: normal;
+  
+}
+.blueTable .tableFootStyle {
+  font-size: 14px;
+}
+.blueTable .tableFootStyle .links {
+	 text-align: right;
+}
+.blueTable .tableFootStyle .links a{
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+.blueTable.outerTableFooter {
+  border-top: none;
+}
+.blueTable.outerTableFooter .tableFootStyle {
+  padding: 3px 5px; 
+}
+/* DivTable.com */
+.divTable{ display: table; }
+.divTableRow { display: table-row; }
+.divTableHeading { display: table-header-group;}
+.divTableCell, .divTableHead, .divTableHead2 { display: table-cell;}
+.divTableHeading { display: table-header-group;}
+.divTableFoot { display: table-footer-group;}
+.divTableBody { display: table-row-group;}
+
+.blankCell{
+  background: #fff !important;
+}
+      
+#residual{
+  margin-top: 55px;
+}
+
+/* Style the tab */
+.tab {
+    background-color: #fff;
+} 
+
+/* Style the buttons that are used to open the tab content */
+/* .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+} */
+
+/* Change background color of buttons on hover */
+/* .tab button:hover {
+    background-color: #ddd;
+} */
+
+/* Create an active/current tablink class */
+.tab button.active {
+    border-bottom: 3px solid #24a1ec !important;
+    color: #24a1ec !important;
+    background: none !important;
+}
+
+
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    /* padding: 6px 12px; */
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.tabcontent {
+    animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+
+/* Go from zero to full opacity */
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-container2 {
+  display: flex;
+  margin-left: 15px;
+}
+
+.tab-links.active{
+  border-bottom: none;
+}
+
+.tab-links:hover{
+  background-color: #f1f1f1 !important;
+}
+
+#total-div{
+  display: flex;
+}
+
+p.total {
+    font-size: 25px;
+    margin-right: 25px;
+}
+
+div#total-div {
+    margin-top: 45px;
+}
+
+p.high {
+    background: #f71717;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    color: #fff;
+    padding: 5px;
+}
+
+p.medium {
+    background: #e6b21a;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    color: #000;
+    padding: 5px;
+}
+
+p.low {
+    background: #1bbd12b3;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    color: #000;
+    padding: 5px;
+}
+
+.arrow {
+    color: #8080808a;
+    font-weight: bold;
+    text-align: right;
+}
+
+
+
+.arrow2 {
+    color: #000000;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.arrow2 p {
+    margin-bottom: 0;
+    text-align: center;
+    font-size: 7px;
+    font-weight: bold;
+}
+
+.triangle-up {
+  margin: auto;
+	width: 0;
+	height: 0;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid #4242428a;
+}
+
+.company-name{
+  margin:auto auto;
+}
+
+span.ag-header-group-text {
+    margin: auto;
+}
+
+span.ag-header-cell-text {
+    margin: auto;
+}
+
+    .rag-yellow{
+        background-color: #ED9B38;
+    }
+
+    .yellow2{
+      background-color: #EFBA46;
+    }
+
+    @media screen and (max-width: 1318px) {
+    .arrow {
+        display: none;
+    }
+  }
+
+   @media screen and (max-width: 1318px){
+     .arrow2 p, .triangle-up{
+       display: none;
+     }
+   }
+   
+    #matrix3 h5 {
+        margin-top: 10px;
+    }
+
+     #matrix3 h6 {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 10px;
+      color: #808080fa;
+    }
+
+            .hoverTable{
+              width:100%; 
+              border-collapse:collapse; 
+            }
+            .hoverTable td{ 
+              padding:7px;
+            }
+            .hoverTable th {
+                padding-left: 5px !important;
+            }
+            
+            /* Define the hover highlight color for the table row */
+              .hoverTable tr:hover {
+                    background-color: #b8d1f3;
+              }
+
+              #likelihood-scale a {
+                  margin-left: 10px;
+              }
+
+              #likelihood-scale a i{
+                  color: rgb(0, 153, 255);
+              }
+
+              #likelihood-scale{
+                overflow: scroll;
+              }
+
+
+              .accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.active, .accordion:hover {
+    background-color: #ccc;
+}
+
+.accordion:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+/* .active:after {
+    content: "\2212";
+} */
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    margin-bottom: 10px !important;
+    margin-top: 20px;
+}
+
+.sever {
+    margin-top: 10px;
+}
+
+.i-f {
+    display: inline-block;
+    width: 70px !important;
+}
+
+.navigation-header {
+    text-align: left !important;
+}
+
+.main-menu.menu-light .navigation .navigation-header{
+  
+  background: #37474f !important;
+}
+
+.table th, .table td {
+    color: rgba(28, 28, 28, 0.76) !important;
+}
+
+.factors-table-div{
+    overflow: scroll;
+}
+
+.assessment-cell{
+    width: 105px !important;
+}
+
+/* .preference-factors-div{
+  display: none;
+} */
+
+  @media screen and (max-width: 768px) {
+    .flex-container{
+        display: block !important;
+      }
+
+      .tab button {
+        float: none !important;
+      }
+
+  }
+
+  /* .assessments-div{
+    display: none;
+  } */
+
+  .my-container{
+    min-height:100%;
+    position:relative;
+    height: 100%;
+  }
+
+  footer{
+    position:absolute;
+    bottom:0;
+    width:100%;
+  }
+  
+  h1.summ {
+    border-bottom: 2px solid;
+  }
+
+  .summary-container {
+    padding: 0 55px;
+  }
+
+  h5 {
+    border-bottom: 3px solid;
+    margin-top: 25px;
+  }
+
+  .org-structure-div span {
+    font-size: 25px;
+    font-weight: 500;
+  }
+  .fixed-width{
+      display: inline-block;
+      width: 90px;
+  }
+  .risk-control-matrix-div span {font-size: 25px;}
+  .auditable-entities-div span {font-size: 44px;}
+  .auditable-entities-div .col-md-6 {text-align: center;}
+  .auditable-entities-div p {margin-bottom: 0;}
+  .auditable-entities-div .departments {text-align: left;}
+  .preference-assessment-div .col-md-6 {text-align: center;}
+  .preference-assessment-div p {margin-bottom: 0;}
+  .preference-assessment-div .completed {text-align: left;}
+  .preference-assessment-div span {font-size: 44px;}
+
+  .red-font{
+      color: red;
+  }
+  .green-font{
+      color: green;
+  }
+  .yellow-font{
+      color: #d7b308;
+  }
+  ul {
+    padding-left: 15px;
+  }
+  ul.mega-dropdown-menu.dropdown-menu.row {
+    width: 250px;
+    left: 850px;
+  }
+
+  ul.mega-dropdown-menu.dropdown-menu.row li{
+    text-align: center;
+  }
+
+  a.dropdown-toggle.nav-link {
+    padding-bottom: 0px !important;
+    padding-top: 17px !important;
+  }
+
+  .mega-dropdown .dropdown-toggle::after {
+    display:none;
+  }
+
+  .mega-dropdown-label{
+    font-size: 11px;
+  }
+
+  .main-menu-content.ps-container.ps-theme-dark {
+    width: 250px;
+  }
+  .main-menu.menu-light .navigation > li.open {
+    border-left: 4px solid #24a1ec;
+  }
+ 
+  </style>
+</head>
+<body class="vertical-layout vertical-menu 2-columns  menu-expanded fixed-navbar"
+data-open="click" data-menu="vertical-menu" data-col="2-columns">
+  <!-- fixed-top-->
+  <nav class="header-navbar navbar-expand-md navbar navbar-with-menu fixed-top navbar-light navbar-border">
+    <div class="navbar-wrapper">
+      <div class="navbar-header">
+        <ul class="nav navbar-nav flex-row">
+          <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
+          
+          <li class="nav-item">
+            <a class="navbar-brand" href="index.html">
+              <img class="brand-logo" alt="ring admin logo" src="../../../app-assets/images/logo/stack-logo.png">
+              <h2 class="brand-text">Audit Ring</h2>
+            </a>
+          </li>
+          <li class="nav-item d-md-none">
+            <a class="nav-link open-navbar-container" data-toggle="collapse" data-target="#navbar-mobile"><i class="fa fa-ellipsis-v"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="navbar-container content">
+        <div class="collapse navbar-collapse" id="navbar-mobile">
+          <ul class="nav navbar-nav mr-auto float-left">
+            <li class="nav-item d-none d-md-block"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu"></i></a></li>
+            <h4 class="company-name">King Faisal Hospital & Research Center</h4>
+            <li class="nav-item d-none d-md-block"><a class="nav-link nav-link-expand" href="#"><i class="ficon ft-maximize"></i></a></li>
+            <li class="nav-item nav-search"><a class="nav-link nav-link-search" href="#"><i class="ficon ft-search"></i></a>
+              <div class="search-input">
+                <input class="input" type="text" placeholder="Explore...">
+              </div>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav float-right">
+            
+              <li class="dropdown nav-item mega-dropdown"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">
+                  grid_on
+                  </i></a>
+                <ul class="mega-dropdown-menu dropdown-menu row">
+                  <li class="col-md-4">
+                    <a href="index.html">
+                      <img src="images/universe.png" alt="universe" height="55px" width="55px">
+                      <p class="mega-dropdown-label">Audit Universe</p>
+                    </a>
+                  </li>
+                  <li class="col-md-4">
+                    <a href="planning-and-scheduling.html">
+                        <img src="images/planning.png" alt="planning" height="55px" width="55px">
+                        <p class="mega-dropdown-label">Planning & Scheduling</p>
+                    </a>
+                  </li>
+                  <li class="col-md-4">
+                    <a href="working-papers.html">
+                        <img src="images/working.png" alt="planning" height="55px" width="55px">
+                        <p class="mega-dropdown-label">Working Papers</p>
+                    </a>
+                  </li>
+                  <li class="col-md-4">
+                    <a href="reports.html">
+                        <img src="images/reports.png" alt="planning" height="55px" width="55px">
+                        <p class="mega-dropdown-label">Reports</p>
+                    </a>
+                  </li>
+                    <li class="col-md-4">
+                      <a href="document-library.html">
+                          <img src="images/document.png" alt="planning" height="55px" width="55px">
+                          <p class="mega-dropdown-label">Document Library</p>
+                      </a>
+                    </li>
+                    <li class="col-md-4">
+                      <a href="my-tasks.html">
+                          <img src="images/tasks.png" alt="planning" height="55px" width="55px">
+                          <p class="mega-dropdown-label">My Tasks</p>
+                      </a>
+                    </li>
+                    <li class="col-md-4">
+                      <a href="access-administration.html">
+                          <img src="images/access.png" alt="planning" height="55px" width="55px">
+                          <p class="mega-dropdown-label">Access Administration</p>
+                      </a>
+                    </li>
+                    <li class="col-md-4">
+                      <a href="system-configuration.html">
+                          <img src="images/system.png" alt="planning" height="55px" width="55px">
+                          <p class="mega-dropdown-label">System Configuration</p>
+                      </a>
+                    </li>
+                </ul>
+              </li>  
+            
+            <li class="dropdown dropdown-notification nav-item">
+              <a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon ft-bell"></i>
+                <span class="badge badge-pill badge-default badge-danger badge-default badge-up">5</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
+                <li class="dropdown-menu-header">
+                  <h6 class="dropdown-header m-0">
+                    <span class="grey darken-2">Notifications</span>
+                    <span class="notification-tag badge badge-default badge-danger float-right m-0">5 New</span>
+                  </h6>
+                </li>
+                <li class="scrollable-container media-list">
+                  <a href="javascript:void(0)">
+                    <div class="media">
+                      <div class="media-left align-self-center"><i class="ft-plus-square icon-bg-circle bg-cyan"></i></div>
+                      <div class="media-body">
+                        <h6 class="media-heading">You have new order!</h6>
+                        <p class="notification-text font-small-3 text-muted">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                        <small>
+                          <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">30 minutes ago</time>
+                        </small>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="javascript:void(0)">
+                    <div class="media">
+                      <div class="media-left align-self-center"><i class="ft-download-cloud icon-bg-circle bg-red bg-darken-1"></i></div>
+                      <div class="media-body">
+                        <h6 class="media-heading red darken-1">99% Server load</h6>
+                        <p class="notification-text font-small-3 text-muted">Aliquam tincidunt mauris eu risus.</p>
+                        <small>
+                          <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Five hour ago</time>
+                        </small>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="javascript:void(0)">
+                    <div class="media">
+                      <div class="media-left align-self-center"><i class="ft-alert-triangle icon-bg-circle bg-yellow bg-darken-3"></i></div>
+                      <div class="media-body">
+                        <h6 class="media-heading yellow darken-3">Warning notifixation</h6>
+                        <p class="notification-text font-small-3 text-muted">Vestibulum auctor dapibus neque.</p>
+                        <small>
+                          <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Today</time>
+                        </small>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="javascript:void(0)">
+                    <div class="media">
+                      <div class="media-left align-self-center"><i class="ft-check-circle icon-bg-circle bg-cyan"></i></div>
+                      <div class="media-body">
+                        <h6 class="media-heading">Complete the task</h6>
+                        <small>
+                          <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Last week</time>
+                        </small>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="javascript:void(0)">
+                    <div class="media">
+                      <div class="media-left align-self-center"><i class="ft-file icon-bg-circle bg-teal"></i></div>
+                      <div class="media-body">
+                        <h6 class="media-heading">Generate monthly report</h6>
+                        <small>
+                          <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Last month</time>
+                        </small>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="dropdown-menu-footer"><a class="dropdown-item text-muted text-center" href="javascript:void(0)">Read all notifications</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown dropdown-user nav-item">
+              <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                <span class="avatar avatar-online">
+                  <img src="../../../app-assets/images/portrait/small/avatar-s-1.png" alt="avatar"><i></i></span>
+                <span class="user-name">Mansoor (Auditor)</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="user-profile.html"><i class="ft-user"></i> Edit Profile</a>
+                <a class="dropdown-item" href="email-application.html"><i class="ft-mail"></i> My Inbox</a>
+                <a class="dropdown-item" href="auditee.html"><i class="ft-user"></i> Switch Role As Auditee</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="lock-screen.html"><i class="ft-lock"></i> Lock Screen</a>
+                <a class="dropdown-item" href="change-password.html"><i class="ft-lock"></i> Change Password</a>
+                <a class="dropdown-item" href="login-with-bg-image.html"><i class="ft-power"></i> Logout</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- ////////////////////////////////////////////////////////////////////////////-->
+  <div class="main-menu menu-fixed menu-light menu-accordion" data-scroll-to-active="true">
+        <div class="main-menu-content">
+          <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+            <li class=" navigation-header">
+              <span id="audit-uni">Audit Universe</span><i class=" ft-minus" data-toggle="tooltip" data-placement="right"
+              data-original-title="General"></i>
+            </li>
+            <li class=" nav-item open"><a href="#"><i class="ft-align-left"></i><span class="menu-title" data-i18n="">Summary</span></a>
+            </li>
+            <li class=" nav-item"><a href="organization-structure.html"><i class="ft-briefcase"></i><span class="menu-title" data-i18n="">Organization Structure</span></a>
+            </li>
+            <li class=" nav-item"><a href="#"><i class="ft-grid"></i><span class="menu-title" data-i18n="">Risk Control Matrix</span></a>
+              <ul class="menu-content">
+                <li><a id="risk-matrix" class="menu-item" href="risk-matrix.html">Risk Matrix</a>
+                </li>
+                <li><a class="menu-item" href="objectives.html">Objectives</a>
+                </li>
+                <li><a id="risk-table" class="menu-item" href="risk-register.html">Risks</a>
+                </li>
+                <li><a class="menu-item" href="controls.html">Controls</a>
+                </li>
+              </ul>
+            </li>
+            <li class=" nav-item"><a id="aud" href="audit-entities.html"><i class="ft-file"></i><span class="menu-title" data-i18n="">Auditable Entities</span></a>
+            </li>
+            <li class=" nav-item"><a href="#"><i class="ft-bar-chart-2"></i><span class="menu-title" data-i18n="">Assessments</span></a>
+              <ul class="menu-content">
+                  <li><a id="factors" class="menu-item" href="preference-factors.html">Factors</a>
+                  </li>
+                  <li><a id="assessments-open" class="menu-item" href="preference-assessments.html">Assessments</a>
+                  </li>
+                  <li><a class="menu-item" href="individual-assessment.html">Individual Assessment</a>
+                  </li>
+              </ul>
+            </li>
+            <li class=" nav-item"><a id="aud" href="#"><i class="ft-file"></i><span class="menu-title" data-i18n="">Reports</span></a>
+            </li>
+          </ul>
+        </div>
+  </div>
+
+  <div class="app-content content">
+    <div class="content-wrapper">
+            <div class="my-container">
+        
+                <h1 class="summ">Summary</h1>
+                <div class="summary-container">
+                        <div class="row">
+                                <div class="col-md-6">
+                                  <div class="org-structure-div">
+                                      <h5> <strong>Organization Structure</strong> </h5>
+                                      <ul>
+                                          <li><span>3</span> Branches</li>
+                                          <li><span>5</span> Divisions</li>
+                                          <li><span>25</span> Departments</li>
+                                          <li><span>48</span> Sections</li>
+                                      </ul>
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                        <div class="risk-control-matrix-div">
+                                            <h5> <strong>Risk Control Matrix</strong> </h5>
+                                            <div class="row">
+                                                    <div class="col-md-4">
+                                                            <p><span>12</span> Objectives</p>
+                                                            <strong><p>Type</p></strong>
+                                                            <ul>
+                                                                <li><div class="fixed-width">Strategic</div>  3</li>
+                                                                <li><div class="fixed-width">Operational</div> 4</li>
+                                                                <li><div class="fixed-width">Reporting</div> 4</li>
+                                                                <li><div class="fixed-width">Compliance</div> 1</li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                                <p class="red-font"><span>35</span> Risks</p>
+                                                                <strong><p>Classification</p></strong>
+                                                                <ul>
+                                                                    <li><div class="fixed-width red-font">High</div> 8</li>
+                                                                    <li ><div class="fixed-width yellow-font">Medium</div> 20</li>
+                                                                    <li><div class="fixed-width green-font">Low</div> 7</li>
+                                                                </ul>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                                <p class="green-font"><span>23</span> Controls</p>
+                                                                <strong><p>Significance</p></strong>
+                                                                <ul>
+                                                                    <li><div class="fixed-width">High</div> 15</li>
+                                                                    <li><div class="fixed-width">Medium</div> 7</li>
+                                                                    <li><div class="fixed-width">Low</div> 1</li>
+                                                                </ul>
+                                                        </div>
+                                            </div>
+                                                
+                                        </div>
+                                </div>
+                                
+                        </div>
+                        <div class="row">
+                                <div class="col-md-6">
+                                        <div class="auditable-entities-div">
+                                                <h5> <strong>Audiable Entities</strong> </h5>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <p>Total</p>
+                                                        <span>85</span>
+                                                    </div>
+                                                    <div class="col-md-6 departments">
+                                                        <ul>
+                                                            <li>Departments: 20</li>
+                                                            <li>Functional Area: 40</li>
+                                                            <li>Processes: 23</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="col-md-6">
+                                        <div class="preference-assessment-div">
+                                                <h5> <strong>Preference Assessment</strong> </h5>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <p>Preference Factors: 18</p>
+                                                        <p>Preference Assessments</p>
+                                                        <span>5</span>
+                                                    </div>
+                                                    <div class="col-md-6 completed">
+                                                        <ul>
+                                                            <li>3 Completed</li>
+                                                            <li>1 In-Process</li>
+                                                            <li>0 On Hold</li>
+                                                            <li>1 Draft</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+      
+    </div>
+  </div>
+  <!-- ////////////////////////////////////////////////////////////////////////////-->
+  <footer class="footer footer-static footer-light navbar-border">
+    <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
+      <span class="float-md-left d-block d-md-inline-block">Copyright &copy; 2018 <a class="text-bold-800 grey darken-2" href="#"
+        target="_blank">RING </a>, All rights reserved. </span>
+      
+    </p>
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      
+    });
+  </script>
+  <!-- BEGIN VENDOR JS-->
+  <script src="../../../app-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+  <!-- BEGIN VENDOR JS-->
+  <!-- BEGIN PAGE VENDOR JS-->
+  <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyBDkKetQwosod2SZ7ZGCpxuJdxY3kxo5Po"
+  type="text/javascript"></script>
+  <script src="../../../app-assets/vendors/js/charts/gmaps.min.js" type="text/javascript"></script>
+  <script src="../../../app-assets/vendors/js/forms/icheck/icheck.min.js" type="text/javascript"></script>
+  <script src="../../../app-assets/vendors/js/extensions/jquery.knob.min.js" type="text/javascript"></script>
+  <script src="../../../app-assets/vendors/js/charts/raphael-min.js" type="text/javascript"></script>
+  <script src="../../../app-assets/vendors/js/charts/morris.min.js" type="text/javascript"></script>
+  <script src="../../../app-assets/vendors/js/charts/jquery.sparkline.min.js" type="text/javascript"></script>
+  <script src="../../../app-assets/vendors/js/extensions/unslider-min.js" type="text/javascript"></script>
+  <script src="../../../app-assets/vendors/js/charts/echarts/echarts.js" type="text/javascript"></script>
+  <!-- END PAGE VENDOR JS-->
+  <!-- BEGIN STACK JS-->
+  <script src="../../../app-assets/js/core/app-menu.js" type="text/javascript"></script>
+  <script src="../../../app-assets/js/core/app.js" type="text/javascript"></script>
+  <script src="../../../app-assets/js/scripts/customizer.js" type="text/javascript"></script>
+  <!-- END STACK JS-->
+  <script src="../../../app-assets/js/scripts/pages/dashboard-fitness.js" type="text/javascript"></script>
+  
+  
+  
+  <script type="text/javascript" charset="utf-8">
+  
+function openCity(evt, cityName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+
+
+
+
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+  </script>
+</body>
+</html>
